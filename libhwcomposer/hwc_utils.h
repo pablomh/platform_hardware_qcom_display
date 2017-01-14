@@ -26,6 +26,9 @@
 
 #include <fcntl.h>
 #include <math.h>
+#ifdef QTI_BSP
+#include <hardware/display_defs.h>
+#endif
 #include <hardware/hwcomposer.h>
 #include <gr.h>
 #include <gralloc_priv.h>
@@ -36,7 +39,6 @@
 #include <overlayRotator.h>
 #include <EGL/egl.h>
 #include <QService.h>
-
 
 #define ALIGN_TO(x, align)     (((x) + ((align)-1)) & ~((align)-1))
 #define LIKELY( exp )       (__builtin_expect( (exp) != 0, true  ))
@@ -49,10 +51,6 @@
 #define STR(f) #f;
 // Max number of PTOR layers handled
 #define MAX_PTOR_LAYERS 2
-
-#ifdef QTI_BSP
-#include <exhwcomposer_defs.h>
-#endif
 
 //Fwrd decls
 struct hwc_context_t;
